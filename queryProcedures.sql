@@ -69,7 +69,62 @@ delete from CatalogodeProductos
 exec insertaCatalogo 234120,'Zapatos azules',8500.00,9500.00,8000012,13.00
 
 -----------------
+create procedure actualizaTelCliente
+	@codigo int,
+	@telefono int
 
+AS
+BEGIN 
+      SET NOCOUNT ON 
+
+      UPDATE TelefonoClientes
+      SET 
+			telefonoCliente=@telefono 
+      FROM   TelefonoClientes
+	  where
+		codCliente=@codigo
+              
+END
+create procedure actualizaCatalogo
+	@SKU int,
+	@descripProducto char(60),
+	@costo int,
+	@precioVenta int,
+	@existencia int,
+	@impVentas int
+AS
+BEGIN 
+      SET NOCOUNT ON 
+
+      UPDATE CatalogodeProductos
+      SET 
+		descripProducto=@descripProducto,
+		costo=@costo ,
+		precioVenta=@precioVenta ,
+		existencia=@existencia ,
+		impVentas=@impVentas 
+	
+      FROM   CatalogdeProductos
+	  wHERE  
+			SKU=@SKU
+      
+              
+END
+GO
+
+	
+
+
+
+---------------
+create procedure eliminaCatalogo
+	@SKU int
+	as
+	begin
+		delete CatalogodeProductos
+		from catalogodeProductos
+		where SKU=@SKU
+	end
 
 
 
