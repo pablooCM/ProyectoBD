@@ -34,3 +34,50 @@ exec insertaCliente 8760, 'Pablo', '506', 'Cartago', '233', 'Calle Blancos', 'as
 exec insertTelefonoCliente 87675678, 876
 
 
+
+ 
+
+
+
+
+
+--------------------
+
+
+create procedure insertaCatalogo
+	@SKU int,
+	@descripProducto char(60),
+	@costo int,
+	@precioVenta int,
+	@existencia int,
+	@impVentas int,
+	@descripcion char(60)
+	
+	as
+	begin
+		insert into CatalogodeProductos values(@SKU,@descripProducto ,@costo,@precioVenta ,@existencia,@impVentas)
+	end
+
+
+
+select * from CatalogodeProductos
+
+
+drop procedure insertaCatalogo
+delete from CatalogodeProductos
+
+exec insertaCatalogo 234120,'Zapatos azules',8500.00,9500.00,8000012,13.00
+
+-----------------
+
+
+
+
+
+
+
+
+
+
+
+
